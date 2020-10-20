@@ -1,0 +1,52 @@
+// 命名_function.scss 或是 _mixins.scss
+// function
+@function toRem($px) {
+  @return ($px / $basic-font-size) * 1rem;
+}
+// extend
+%clearfix {
+  // 用%(佔位符)不會被scss編譯 class的(.)不用寫 但@extend時也要加上%
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// 垂直置中的一種寫法
+%vertical-center {
+  position: relative;
+  top: 50%; // 外層空間向下移50%
+  transform: translateY(-50%); //內層空間往上移50%
+}
+@mixin pad-over-576 {
+  @media screen and (min-width: 576px) {
+    @content;
+  }
+}
+@mixin pad-over-768 {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin pad-over-992 {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin pad-991 {
+  @media screen and (max-width: 991px) {
+    @content;
+  }
+}
+@mixin pad-767 {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media screen and (max-width: 576px) {
+    @content;
+  }
+}
